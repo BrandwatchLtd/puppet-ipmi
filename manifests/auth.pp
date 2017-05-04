@@ -12,6 +12,6 @@ define ipmi::auth (
 
   exec { "ipmi_set_auth_${title}":
     command => "/usr/bin/ipmitool lan set 1 auth ${title} ${auth_type}",
-    onlyif  => "/usr/bin/test \"$(ipmitool lan print | grep -A 4 'Auth Type Enable' | grep \"${title}\" sed -e 's/.* : //g')\" != \"${auth_type}\"",
+    onlyif  => "/usr/bin/test \"$(ipmitool lan print | grep -A 4 'Auth Type Enable' | grep \"${title}\" | sed -e 's/.* : //g')\" != \"${auth_type}\"",
   }
 }
