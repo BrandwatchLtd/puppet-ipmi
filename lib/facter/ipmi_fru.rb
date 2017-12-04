@@ -15,6 +15,8 @@ def parse_ipmitool_output ipmitool_output
       add_ipmi_fact("fru_board_product", $1)
     when /^Product Serial\s*:\s+(\S.*)/
       add_ipmi_fact("fru_product_serial", $1)
+    when /^Product Name\s*:\s+(\S.*)/
+      add_ipmi_fact("fru_product_name", $1)
     end
   end
 end
